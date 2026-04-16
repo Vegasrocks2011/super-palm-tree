@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refraction — Student Resource</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, serif; background: #f4f8fb; color: #1a2533; line-height: 1.7; }
+
+  header {
+    background: #065A82;
+    color: white;
+    padding: 2rem 2.5rem 1.5rem;
+  }
+  header h1 { font-size: 2rem; font-weight: bold; margin-bottom: 0.3rem; }
+  header p { font-size: 1rem; opacity: 0.85; }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* Section cards */
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.8rem 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #d0e4f0;
+  }
+
+  .card h2 {
+    font-size: 1.25rem;
+    color: #065A82;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #B5D4F4;
+  }
+
+  .card p { margin-bottom: 0.8rem; font-size: 1rem; }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* Key terms */
+  .key-term { font-weight: bold; color: #1C7293; }
+
+  /* Diagram area */
+  .diagram-box {
+    background: #EAF4FB;
+    border: 1px solid #B5D4F4;
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin: 1.2rem 0;
+    text-align: center;
+  }
+  .diagram-box svg { max-width: 100%; height: auto; }
+
+  /* Rules box */
+  .rules {
+    background: #FFF8E1;
+    border-left: 5px solid #EF9F27;
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .rules h3 { color: #BA7517; font-size: 1rem; margin-bottom: 0.5rem; }
+  .rules ol { padding-left: 1.2rem; font-size: 0.97rem; }
+  .rules ol li { margin-bottom: 0.4rem; }
+
+  /* Activity sections */
+  .activity {
+    background: #EAF3DE;
+    border: 1px solid #C0DD97;
+    border-radius: 10px;
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .activity h2 {
+    font-size: 1.15rem;
+    color: #3B6D11;
+    margin-bottom: 0.8rem;
+  }
+  .activity p { font-size: 0.97rem; margin-bottom: 0.8rem; }
+
+  /* Answer lines */
+  .answer-line {
+    display: block;
+    border-bottom: 1.5px solid #888;
+    margin: 0.5rem 0 1rem;
+    height: 1.6rem;
+    width: 100%;
+  }
+  .answer-line-sm {
+    display: inline-block;
+    border-bottom: 1.5px solid #888;
+    width: 120px;
+    margin: 0 0.3rem;
+  }
+
+  /* Draw box */
+  .draw-box {
+    border: 2px dashed #639922;
+    border-radius: 8px;
+    width: 100%;
+    height: 200px;
+    margin: 0.8rem 0 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #639922;
+    font-size: 0.9rem;
+    background: white;
+  }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95rem; }
+  th { background: #065A82; color: white; padding: 0.6rem 0.8rem; text-align: left; }
+  td { padding: 0.6rem 0.8rem; border-bottom: 1px solid #d0e4f0; }
+  tr:nth-child(even) td { background: #f0f7fc; }
+  td.write { background: #fffdf0; }
+
+  /* Sort activity */
+  .sort-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .sort-col {
+    border: 2px solid;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 160px;
+  }
+  .sort-col.yes { border-color: #639922; background: #f5fbef; }
+  .sort-col.no  { border-color: #E24B4A; background: #fef4f4; }
+  .sort-col h3 { font-size: 0.95rem; margin-bottom: 0.8rem; }
+  .sort-col h3.yes { color: #3B6D11; }
+  .sort-col h3.no  { color: #A32D2D; }
+  .sort-col .line { border-bottom: 1px solid #ccc; margin: 0.4rem 0; padding-bottom: 0.4rem; font-size: 0.9rem; }
+
+  /* Snell's law */
+  .formula-box {
+    background: #042C53;
+    color: white;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    margin: 1rem 0;
+  }
+  .formula-box span { font-style: italic; }
+
+  /* Checklist */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 0.5rem; font-size: 0.97rem; }
+  .checklist li::before {
+    content: "☐";
+    font-size: 1.1rem;
+    color: #065A82;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  /* Footer */
+  footer { text-align: center; font-size: 0.85rem; color: #888; margin-top: 3rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Refraction of Light</h1>
+  <p>Year 8 Physics &nbsp;|&nbsp; Building on: The Law of Reflection</p>
+</header>
+
+<div class="container">
+
+  <!-- SECTION 1: What is refraction? -->
+  <div class="card">
+    <h2>1. What is Refraction?</h2>
+    <p>You already know that when light hits a mirror, it <span class="key-term">bounces back</span> — that's reflection. But what happens when light passes <em>through</em> a material instead of bouncing off it?</p>
+    <p>When light travels from one material into another (for example, from air into water), it changes speed. If it hits the boundary at an angle, this change in speed causes the light to <span class="key-term">change direction</span>. This bending of light is called <span class="key-term">refraction</span>.</p>
+
+    <div class="diagram-box">
+      <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Air region -->
+        <rect x="0" y="0" width="500" height="150" fill="#E6F1FB" opacity="0.5"/>
+        <text x="16" y="28" font-family="Georgia" font-size="14" fill="#185FA5" font-weight="bold">Air (less dense — light travels faster)</text>
+
+        <!-- Glass region -->
+        <rect x="0" y="150" width="500" height="150" fill="#B5D4F4" opacity="0.5"/>
+        <text x="16" y="172" font-family="Georgia" font-size="14" fill="#0C447C" font-weight="bold">Glass (more dense — light travels slower)</text>
+
+        <!-- Boundary -->
+        <line x1="0" y1="150" x2="500" y2="150" stroke="#185FA5" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+        <!-- Normal -->
+        <line x1="250" y1="20" x2="250" y2="280" stroke="#999" stroke-width="1" stroke-dasharray="5,4"/>
+        <text x="258" y="38" font-family="Georgia" font-size="12" fill="#666">normal</text>
+
+        <!-- Incident ray -->
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#EF9F27" stroke-width="1.5"/>
+          </marker>
+        </defs>
+        <line x1="140" y1="40" x2="250" y2="150" stroke="#EF9F27" stroke-width="3" marker-end="url(#arr)"/>
+        <text x="135" y="38" font-family="Georgia" font-size="12" fill="#BA7517" text-anchor="middle">incident ray</text>
+
+        <!-- Refracted ray (bends toward normal) -->
+        <line x1="250" y1="150" x2="320" y2="280" stroke="#EF9F27" stroke-width="3" marker-end="url(#arr)"/>
+        <text x="360" y="285" font-family="Georgia" font-size="12" fill="#BA7517">refracted ray</text>
+
+        <!-- Angle of incidence -->
+        <path d="M250 100 A50 50 0 0 0 213 124" fill="none" stroke="#666" stroke-width="1"/>
+        <text x="185" y="108" font-family="Georgia" font-size="11" fill="#444">angle of</text>
+        <text x="185" y="122" font-family="Georgia" font-size="11" fill="#444">incidence (θ₁)</text>
+
+        <!-- Angle of refraction -->
+        <path d="M250 200 A50 50 0 0 1 273 180" fill="none" stroke="#666" stroke-width="1"/>
+        <text x="278" y="192" font-family="Georgia" font-size="11" fill="#444">angle of</text>
+        <text x="278" y="206" font-family="Georgia" font-size="11" fill="#444">refraction (θ₂)</text>
+
+        <!-- Key label -->
+        <rect x="330" y="60" width="155" height="56" rx="8" fill="#FAEEDA" stroke="#EF9F27" stroke-width="1"/>
+        <text x="407" y="82" font-family="Georgia" font-size="12" fill="#BA7517" text-anchor="middle">Bends TOWARDS</text>
+        <text x="407" y="98" font-family="Georgia" font-size="12" fill="#BA7517" text-anchor="middle">the normal ↓</text>
+        <text x="407" y="112" font-family="Georgia" font-size="12" fill="#BA7517" text-anchor="middle">(entering denser medium)</text>
+      </svg>
+    </div>
+
+    <div class="rules">
+      <h3>The Rules of Refraction</h3>
+      <ol>
+        <li>Light bends <strong>towards</strong> the normal when going into a <strong>denser</strong> material (e.g. air → glass or water)</li>
+        <li>Light bends <strong>away</strong> from the normal when going into a <strong>less dense</strong> material (e.g. glass → air)</li>
+        <li>If light hits the boundary <strong>straight on (0°)</strong>, it does not bend at all</li>
+        <li>The angle of incidence and angle of refraction are both measured from the <strong>normal</strong>, not the surface</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Comparing reflection and refraction -->
+  <div class="card">
+    <h2>2. Reflection vs Refraction — What's the Difference?</h2>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>Reflection</th>
+        <th>Refraction</th>
+      </tr>
+      <tr>
+        <td>What happens to light?</td>
+        <td>Bounces back</td>
+        <td>Passes through and bends</td>
+      </tr>
+      <tr>
+        <td>Does it cross the boundary?</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Does speed change?</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Example</td>
+        <td>Mirror, still water surface</td>
+        <td>Glass, water, lenses</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ACTIVITY 1 -->
+  <div class="activity">
+    <h2>Activity 1 — Draw the Three Scenarios</h2>
+    <p>In each box below, draw a diagram showing the light ray, the boundary, the normal, and label the angles. Use the key words: <em>incident ray, refracted ray, normal, angle of incidence, angle of refraction.</em></p>
+
+    <p><strong>Scenario A:</strong> Light going from air into water (hits at an angle)</p>
+    <div class="draw-box">Draw here — label which way the ray bends and why</div>
+
+    <p><strong>Scenario B:</strong> Light going from water into air (hits at an angle)</p>
+    <div class="draw-box">Draw here — does it bend toward or away from the normal?</div>
+
+    <p><strong>Scenario C:</strong> Light hitting the boundary dead-on (at 0° to the normal)</p>
+    <div class="draw-box">Draw here — what happens? Does it bend at all?</div>
+
+    <p><strong>Explain in words:</strong> Why does light bend when it crosses a boundary?</p>
+    <span class="answer-line"></span>
+    <span class="answer-line"></span>
+    <span class="answer-line"></span>
+  </div>
+
+  <!-- SECTION 3: Real-world examples -->
+  <div class="card">
+    <h2>3. Refraction in the Real World</h2>
+    <p>Refraction explains many everyday observations. Here are some you should be able to explain:</p>
+
+    <table>
+      <tr>
+        <th>Observation</th>
+        <th>Caused by refraction?</th>
+        <th>Brief explanation</th>
+      </tr>
+      <tr>
+        <td>A straw looks bent in a glass of water</td>
+        <td style="text-align:center; color:#3B6D11; font-weight:bold">✓ Yes</td>
+        <td>Light bends as it leaves the water, making the straw appear to shift</td>
+      </tr>
+      <tr>
+        <td>Your reflection in a mirror</td>
+        <td style="text-align:center; color:#A32D2D; font-weight:bold">✗ No</td>
+        <td>This is reflection, not refraction</td>
+      </tr>
+      <tr>
+        <td>A rainbow</td>
+        <td style="text-align:center; color:#3B6D11; font-weight:bold">✓ Yes</td>
+        <td>Water droplets refract sunlight and split it into colours</td>
+      </tr>
+      <tr>
+        <td>A swimming pool looks shallower than it is</td>
+        <td style="text-align:center; color:#3B6D11; font-weight:bold">✓ Yes</td>
+        <td>Light bends as it leaves the water, making the bottom appear higher</td>
+      </tr>
+      <tr>
+        <td>A magnifying glass making things bigger</td>
+        <td style="text-align:center; color:#3B6D11; font-weight:bold">✓ Yes</td>
+        <td>The curved lens refracts light to converge rays and create a larger image</td>
+      </tr>
+      <tr>
+        <td>A shadow on a wall</td>
+        <td style="text-align:center; color:#A32D2D; font-weight:bold">✗ No</td>
+        <td>Shadows are caused by light travelling in straight lines, not refraction</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ACTIVITY 2 -->
+  <div class="activity">
+    <h2>Activity 2 — Refraction Sort</h2>
+    <p>Sort the examples below into the correct column. Write each one under the right heading.</p>
+    <p><em>Examples: straw in water &nbsp;|&nbsp; mirror reflection &nbsp;|&nbsp; rainbow &nbsp;|&nbsp; shadow on wall &nbsp;|&nbsp; pool looks shallower &nbsp;|&nbsp; magnifying glass &nbsp;|&nbsp; sunset colours &nbsp;|&nbsp; echo of sound</em></p>
+
+    <div class="sort-grid">
+      <div class="sort-col yes">
+        <h3 class="yes">✓ Caused by Refraction</h3>
+        <div class="line">&nbsp;</div>
+        <div class="line">&nbsp;</div>
+        <div class="line">&nbsp;</div>
+        <div class="line">&nbsp;</div>
+        <div class="line">&nbsp;</div>
+      </div>
+      <div class="sort-col no">
+        <h3 class="no">✗ NOT Refraction</h3>
+        <div class="line">&nbsp;</div>
+        <div class="line">&nbsp;</div>
+        <div class="line">&nbsp;</div>
+        <div class="line">&nbsp;</div>
+        <div class="line">&nbsp;</div>
+      </div>
+    </div>
+
+    <p style="margin-top:1rem"><strong>Challenge:</strong> Choose one example from the "caused by refraction" column and explain it fully using the words: <em>boundary, normal, angle, dense, bends.</em></p>
+    <span class="answer-line"></span>
+    <span class="answer-line"></span>
+    <span class="answer-line"></span>
+  </div>
+
+  <!-- SECTION 4: Snell's Law -->
+  <div class="card">
+    <h2>4. Snell's Law (The Maths)</h2>
+    <p>Scientists use a formula to calculate exactly how much light bends. It's called <span class="key-term">Snell's Law</span>:</p>
+
+    <div class="formula-box">
+      <span>n</span>₁ sin θ₁ &nbsp;=&nbsp; <span>n</span>₂ sin θ₂
+    </div>
+
+    <table>
+      <tr><th>Symbol</th><th>What it means</th></tr>
+      <tr><td><strong>n₁</strong></td><td>Refractive index of material 1 (where light starts)</td></tr>
+      <tr><td><strong>n₂</strong></td><td>Refractive index of material 2 (where light goes)</td></tr>
+      <tr><td><strong>θ₁</strong></td><td>Angle of incidence (measured from the normal)</td></tr>
+      <tr><td><strong>θ₂</strong></td><td>Angle of refraction (measured from the normal)</td></tr>
+    </table>
+
+    <p style="margin-top:1rem"><strong>Refractive index (n)</strong> tells us how much a material slows light down. Air ≈ 1.0, water ≈ 1.33, glass ≈ 1.5. A higher number means light slows down more.</p>
+
+    <div class="rules">
+      <h3>Worked Example</h3>
+      <ol>
+        <li>Light travels from air (n₁ = 1.0) into glass (n₂ = 1.5)</li>
+        <li>The angle of incidence is 30°</li>
+        <li>Using Snell's Law: 1.0 × sin(30°) = 1.5 × sin(θ₂)</li>
+        <li>sin(30°) = 0.5, so: 0.5 = 1.5 × sin(θ₂)</li>
+        <li>sin(θ₂) = 0.5 ÷ 1.5 = 0.333</li>
+        <li>θ₂ = sin⁻¹(0.333) = <strong>19.5°</strong></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 3 -->
+  <div class="activity">
+    <h2>Activity 3 — Snell's Law Calculations</h2>
+    <p>Use Snell's Law (n₁ sin θ₁ = n₂ sin θ₂) to answer the questions below. Show your working.</p>
+
+    <p><strong>Question 1:</strong> Light travels from air (n = 1.0) into water (n = 1.33) at an angle of incidence of 45°. What is the angle of refraction?</p>
+    <p><em>Working:</em></p>
+    <span class="answer-line"></span>
+    <span class="answer-line"></span>
+    <p><em>Answer: θ₂ = </em><span class="answer-line-sm"></span>°</p>
+
+    <p style="margin-top:1.2rem"><strong>Question 2:</strong> Light travels from glass (n = 1.5) into air (n = 1.0) at an angle of incidence of 25°. What is the angle of refraction? Which way does it bend?</p>
+    <p><em>Working:</em></p>
+    <span class="answer-line"></span>
+    <span class="answer-line"></span>
+    <p><em>Answer: θ₂ = </em><span class="answer-line-sm"></span>° &nbsp;&nbsp; It bends <span class="answer-line-sm"></span> the normal.</p>
+
+    <p style="margin-top:1.2rem"><strong>Challenge Question:</strong> A ray of light enters water at 60° and is refracted to 40.6°. Calculate the refractive index of the water. Show your working.</p>
+    <span class="answer-line"></span>
+    <span class="answer-line"></span>
+    <p><em>n = </em><span class="answer-line-sm"></span></p>
+  </div>
+
+  <!-- SELF CHECK -->
+  <div class="card">
+    <h2>5. Self-Check — Can You Do These?</h2>
+    <ul class="checklist">
+      <li>Define refraction in my own words</li>
+      <li>State what happens to light speed when it enters a denser material</li>
+      <li>Draw a correctly labelled refraction diagram including the normal and angles</li>
+      <li>Explain which way light bends when going air → glass and glass → air</li>
+      <li>Explain why a swimming pool looks shallower than it really is</li>
+      <li>Use Snell's Law to calculate an angle of refraction</li>
+      <li>Explain what refractive index means</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>Refraction of Light &nbsp;|&nbsp; Year 8 Physics &nbsp;|&nbsp; Use alongside your lesson notes</p>
+  </footer>
+
+</div>
+</body>
+</html>
